@@ -1,0 +1,52 @@
+<div class="container px-4  w-2/3 w-1/2 overflow-x-auto mt-4">
+    <h2  class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800">Products</h2>
+              
+    <div class="flex">
+        <div class="flex-auto w-65">
+        <input type="text" #term placeholder="Search by name" class="w-full shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+        <div class="flex-auto mx-2">
+        <button (click)="search(term.value)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Search</button>
+        </div>
+
+    </div>
+    <div class="my-2">
+        <button routerLink="/add-product" type="button" class="text-white bg-blue-500 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add more</button>
+           </div>
+    <table class="my-4 w-full border-gray-700 text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="py-3 px-6">
+                    Product
+                </th>
+                <th scope="col" class="py-3 px-6">
+                    Category
+                </th>
+                <th scope="col" class="py-3 px-6">
+                    Price
+                </th>
+                <th scope="col" class="py-3 px-6">
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of products;index as i" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <td class="py-4 px-6" >
+                    {{product.name}}
+                </td>
+                <td class="py-4 px-6" >
+                    {{product.categoryName}}
+                </td>
+                <td class="py-4 px-6" >
+                    {{product.price}}
+                </td>
+                <td>
+                    <button type="button" (click)="edit(product.id)" class="px-2 rounded-md py-2 bg-gray-700 text-white">Edit</button>
+                    <button type="button" (click)="delete(product.id,i)" class="mx-2 px-2 rounded-md py-2 bg-gray-700 text-white">Delete</button>
+                </td>
+               
+            </tr>
+        </tbody>
+    </table>
+</div>
